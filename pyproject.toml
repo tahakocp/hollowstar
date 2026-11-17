@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hollowstar"
+version = "0.1.0"
+description = "Spot inflated GitHub star counts and fake-star campaigns from public, privacy-safe data"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Taha Kocpinar" }]
+keywords = ["github", "fake-stars", "stars", "spam", "supply-chain", "open-source"]
+classifiers = [
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Topic :: Software Development",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/TahaKocpinar/hollowstar"
+
+[project.scripts]
+hollowstar = "hollowstar.cli:main"
+
+[tool.setuptools]
+packages = ["hollowstar"]

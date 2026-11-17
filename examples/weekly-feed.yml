@@ -1,0 +1,30 @@
+# Copy to .github/workflows/ in your own repo to publish a weekly list of new
+# repos with the boosted ones taken out. The list lands in feed/new-repos.md.
+name: weekly clean feed
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install git+https://github.com/TahaKocpinar/hollowstar
+      - env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p feed
+          hollowstar sweep --days 7 --min-stars 50 --limit 500 --format md > feed/new-repos.md
+          hollowstar sweep --days 7 --min-stars 50 --limit 500 --format json > feed/new-repos.json
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed
+          git diff --cached --quiet || git commit -m "feed: $(date -u +%F)"
+          git push

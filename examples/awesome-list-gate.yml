@@ -1,0 +1,28 @@
+# For curated lists: check repos linked in a pull request before merging them.
+name: check submitted repos
+
+on:
+  pull_request:
+    paths: ["README.md"]
+
+permissions:
+  contents: read
+
+jobs:
+  stars:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: added
+        run: |
+          repos=$(git diff "origin/${{ github.base_ref }}"...HEAD -- README.md \
+            | grep '^+' | grep -oE 'github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+' \
+            | sed 's#github.com/##; s#\.git$##' | sort -u | tr '\n' ' ')
+          echo "repos=$repos" >> "$GITHUB_OUTPUT"
+      - if: steps.added.outputs.repos != ''
+        uses: TahaKocpinar/hollowstar@v0.1.0
+        with:
+          repos: ${{ steps.added.outputs.repos }}
+          fail-above: "60"

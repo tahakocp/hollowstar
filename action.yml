@@ -1,0 +1,33 @@
+name: hollowstar
+description: Score GitHub repos for inflated star counts and fail the job above a threshold
+branding:
+  icon: star
+  color: yellow
+inputs:
+  repos:
+    description: Space-separated owner/repo names or github.com URLs
+    required: true
+  fail-above:
+    description: Fail when any repo scores above this (0-100)
+    default: "60"
+  token:
+    description: Token used for the GitHub API
+    default: ${{ github.token }}
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: python3 -m pip install --quiet "${{ github.action_path }}"
+    - shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+        REPOS: ${{ inputs.repos }}
+        FAIL_ABOVE: ${{ inputs.fail-above }}
+      run: |
+        set +e
+        # REPOS is split on whitespace on purpose: one argument per repo.
+        hollowstar check $REPOS --format md --fail-above "$FAIL_ABOVE" > hollowstar.md
+        code=$?
+        cat hollowstar.md >> "$GITHUB_STEP_SUMMARY"
+        cat hollowstar.md
+        exit $code
