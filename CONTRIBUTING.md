@@ -1,7 +1,7 @@
 # Contributing
 
 ```
-git clone https://github.com/TahaKocpinar/hollowstar
+git clone https://github.com/tahakocp/hollowstar
 cd hollowstar
 python -m unittest discover -s tests -t . -v
 ```

@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install git+https://github.com/TahaKocpinar/hollowstar
+      - run: pip install git+https://github.com/tahakocp/hollowstar
       - env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |

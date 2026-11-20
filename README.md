@@ -37,7 +37,7 @@ What's still public is enough if you look at the *shape* instead of the people:
 Python 3.10+, no dependencies.
 
 ```bash
-pip install git+https://github.com/TahaKocpinar/hollowstar
+pip install git+https://github.com/tahakocp/hollowstar
 ```
 
 It needs a GitHub token for GraphQL and search. If you're logged in with the `gh` CLI it picks that up; otherwise set `GITHUB_TOKEN`. Any token works, no scopes needed.
@@ -104,7 +104,7 @@ The 2 + 2 in the middle row are worth a look by hand; `sweep` doesn't catch boos
 Curated lists get a steady stream of PRs adding boosted repos. The action scores whatever you pass it and fails above a threshold:
 
 ```yaml
-- uses: TahaKocpinar/hollowstar@v0.1.0
+- uses: tahakocp/hollowstar@v0.1.0
   with:
     repos: owner/one owner/two
     fail-above: "60"
@@ -126,7 +126,7 @@ Curated lists get a steady stream of PRs adding boosted repos. The action scores
 GitHub, Temmuz 2026'da yıldız verenlerin listesini yalnızca repo yöneticilerine açtı. Hesap hesap kontrol eden eski sahte yıldız araçları bu yüzden artık çalışmıyor. hollowstar kişilere bakmıyor. Yıldızların günlere dağılımına (satın alınan paket bir-iki günde gelir ve kesilir), fork/izleyici/issue oranlarına ve aynı şablonla açılmış repo kümelerine bakıyor.
 
 ```bash
-pip install git+https://github.com/TahaKocpinar/hollowstar
+pip install git+https://github.com/tahakocp/hollowstar
 hollowstar check sahip/repo        # tek repo puanı (0-100)
 hollowstar sweep --days 7          # son 7 günün yeni repolarında kampanya taraması
 ```

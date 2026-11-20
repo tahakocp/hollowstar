@@ -22,7 +22,7 @@ jobs:
             | sed 's#github.com/##; s#\.git$##' | sort -u | tr '\n' ' ')
           echo "repos=$repos" >> "$GITHUB_OUTPUT"
       - if: steps.added.outputs.repos != ''
-        uses: TahaKocpinar/hollowstar@v0.1.0
+        uses: tahakocp/hollowstar@v0.1.0
         with:
           repos: ${{ steps.added.outputs.repos }}
           fail-above: "60"

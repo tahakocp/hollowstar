@@ -21,7 +21,7 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/TahaKocpinar/hollowstar"
+Homepage = "https://github.com/tahakocp/hollowstar"
 
 [project.scripts]
 hollowstar = "hollowstar.cli:main"
