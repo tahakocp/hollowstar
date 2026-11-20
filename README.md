@@ -2,6 +2,12 @@
 
 **Tells you whether a GitHub repo's stars were earned or bought, using only data GitHub still makes public.**
 
+![hollowstar checking sveltejs/svelte, then sweeping the past week of new repos](docs/demo.gif)
+
+<sub>Real run, 2026-11-20 (cast file: [docs/demo.cast](docs/demo.cast)). The sweep counts are for that day.</sub>
+
+What a flagged repo looks like:
+
 ```
 $ hollowstar check some-account/daw-plugin-desktop
 some-account/daw-plugin-desktop  score 77/100  (likely inflated)
@@ -12,14 +18,9 @@ some-account/daw-plugin-desktop  score 77/100  (likely inflated)
   - [fresh_owner] owner account was 32 day(s) old at repo creation, 0 follower(s)
   - [no_conversation] 0 issues and 0 pull requests ever opened
   - [seo_stuffing] 17 topics, 0 keyword separators in the description
-
-$ hollowstar check sveltejs/svelte
-sveltejs/svelte  score 0/100  (no strong signal)
-  89283 stars, 6172 forks, 950 watchers, created 2016-11-20
-  - nothing unusual in the public numbers
 ```
 
-(The first repo is real; the account name is replaced here.)
+(The repo is real; the account name is replaced here.)
 
 ## Why this exists
 
