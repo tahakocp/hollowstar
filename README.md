@@ -81,7 +81,7 @@ It groups search results three ways and only flags a group when its members also
 - the same name once suffixes like `-desktop`, `-hub`, `2.0` are stripped,
 - star counts within 2 of each other across 5+ accounts (only the hollow members are named).
 
-The rest of the results come out as a clean list, which is the point: a "new this week" feed where the first page isn't 30 copies of the same lure.
+The rest of the results come out as a clean list: a "new this week" feed whose first page is not 30 copies of the same lure.
 
 ## Measured on 17 November 2026
 
